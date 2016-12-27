@@ -1,0 +1,21 @@
+{
+    "version": "1.0",
+    "name": "Metadata Viewer",
+    "description": "DHIS2 App",
+    "launch_path": "index.html",
+    "icons": {
+        "16": "/icons/16x16.png",
+        "48": "/icons/48x48.png",
+        "128": "/icons/128x128.png"
+    },
+    "developer": {
+        "name": "Dung",
+        "url": ""
+    },
+    "default_locale": "en",
+    "activities": {
+        "dhis": {
+            "href": "*"
+        }
+    }
+}
