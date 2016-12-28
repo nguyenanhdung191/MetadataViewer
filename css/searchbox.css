@@ -1,4 +1,26 @@
+.searchBox{
+    height: 50px;
+}
 .loader {
     height:40px;
     width:auto;
+}
+
+#searchBox {
+    width: 170px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    background-color: white;
+    background-image: url("../img/searchicon.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    padding: 7px 20px 7px 40px;
+    -webkit-transition: width 0.1s ease-in-out;
+    transition: width 0.1s ease-in-out;
+}
+
+#searchBox:focus {
+    width:350px;
 }

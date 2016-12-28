@@ -1,5 +1,7 @@
 class DataElement {
     constructor() {
+        this.formName = null;
+        this.code = null;
         this.id = null;
         this.name = null;
         this.shortName = null;
@@ -8,14 +10,13 @@ class DataElement {
         this.description = null;
         this.valueType = null;
         this.categoryCombo = null;
+        this.optionSet = null;
         this.user = null;
         this.dataSets = null;
+        this.organisationUnit = null;
     }
-
-    showAll(des){
-        console.log(des);
-    };
 }
+
 class Category {
     constructor() {
         this.id = null;
@@ -37,7 +38,7 @@ class CategoryCombo {
     }
 }
 
-class CategoryOption{
+class CategoryOption {
     constructor() {
         this.id = null;
         this.name = null;
@@ -46,7 +47,7 @@ class CategoryOption{
     }
 }
 
-class CategoryOptionCombo{
+class CategoryOptionCombo {
     constructor() {
         this.id = null;
         this.name = null;

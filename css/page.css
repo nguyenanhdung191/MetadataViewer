@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: 1px solid white;
+}
+
+#numberOfItem {
+    margin-bottom: 5px;
+}
+

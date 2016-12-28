@@ -7,18 +7,64 @@
     <script src="script/config.js"></script>
     <script src="script/get.js"></script>
     <script src="script/view.js"></script>
-    <link rel="stylesheet" href="css/loader.css"/>
+    <link rel="stylesheet" href="css/page.css"/>
+    <link rel="stylesheet" href="css/content.css"/>
+    <link rel="stylesheet" href="css/table.css"/>
+    <link rel="stylesheet" href="css/modal.css"/>
+    <link rel="stylesheet" href="css/searchbox.css"/>
 </head>
 <body>
-<div class="loader">
-    <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-    </svg>
-</div>
-<input type="text" onkeyup="getDataElementByName(this.value)"/>
-<table id="content">
-
+<table class="searchBox">
+    <tr>
+        <td><input type="text" id="searchBox" placeholder="Search by name.." oninput="getDataElement(this.value)"></td>
+        <td><img class="loader" src="img/loading.gif"/></td>
+    </tr>
 </table>
+<div id="numberOfItem"></div>
+<table class="table-fill" id="content"></table>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            Object details
+        </div>
+        <div class="modal-body">
+            <div class="modal-content-left">
+                <div class="detailHeader">ID</div>
+                <input type="text" class="detailData" id="detailID"/>
+                <div class="detailHeader">Name</div>
+                <input type="text" class="detailData" id="detailName"/>
+                <div class="detailHeader">Short name</div>
+                <input type="text" class="detailData" id="detailShortName"/>
+                <div class="detailHeader">Code</div>
+                <input type="text" class="detailData" id="detailCode"/>
+                <div class="detailHeader">Description</div>
+                <input type="text" class="detailData" id="detailDescription"/>
+                <div class="detailHeader">Form name</div>
+                <input type="text" class="detailData" id="detailFormName"/>
+                <div class="detailHeader">Domain type</div>
+                <input type="text" class="detailData" id="detailDomainType"/>
+                <div class="detailHeader">Value type</div>
+                <input type="text" class="detailData" id="detailValueType"/>
+                <div class="detailHeader">Aggregation type</div>
+                <input type="text" class="detailData" id="detailAggregationType"/>
+                <div class="detailHeader">Store zero data values</div>
+                <input type="text" class="detailData" id="detailAllowNull"/>
+                <div class="detailHeader">Category combination</div>
+                <input type="text" class="detailData" id="detailCategoryCombo"/>
+                <div class="detailHeader">Option set</div>
+                <input type="text" class="detailData" id="detailOptionSet"/>
+                <div class="detailHeader">User</div>
+                <input type="text" class="detailData" id="detailUser"/>
+            </div>
+            <div class="modal-content-right">
+                <div class="detailHeader">Organisation units</div>
+                <div class="detailData">tùm lum</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script/modal.js"></script>
 <script src="script/app.js"></script>
 </body>
 </html>
