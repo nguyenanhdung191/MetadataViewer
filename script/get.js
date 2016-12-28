@@ -1,12 +1,14 @@
 let currentRequest = null;
+let ccs = [];
+let oss = [];
 let des = [];
 const getDataElement = (keyword) => {
     var apiString;
     if(keyword == ""){
-        apiString = `https://dhis2.asia/lao/api/dataElements.json?fields=:all,categoryCombo[id,name],user[id,name],optionSet[id,name]&paging=false`;
+        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name],user[id,name],optionSet[id,name]&paging=false`;
     }
     else{
-        apiString = `https://dhis2.asia/lao/api/dataElements.json?fields=:all,categoryCombo[id,name],user[id,name],optionSet[id,name]&filter=name:ilike:${keyword}&paging=false`;
+        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name],user[id,name],optionSet[id,name]&filter=name:ilike:${keyword}&paging=false`;
     }
     currentRequest = $.ajax({
         type: "GET",
@@ -30,6 +32,7 @@ const getDataElement = (keyword) => {
                 de.dataSets = value.dataSets;
                 de.optionSet = value.optionSet;
                 de.user = value.user;
+                de.zeroIsSignificant = value.zeroIsSignificant;
                 des.push(de);
             });
             showDataElement(des);
@@ -39,6 +42,51 @@ const getDataElement = (keyword) => {
                     showDataElementDetail(des[index]);
                 });
             });
+        }
+    });
+};
+const getCategoryCombo = () => {
+    var apiString = `${url}/api/categoryCombos.json?fields=id,name,isDefault&paging=false`;
+    $.ajax({
+        beforeSend: function (xhr) {
+            $(".loader").show();
+            xhr.setRequestHeader("Authorization", "Basic " + btoa("dung:ABCD1234"));
+        },
+        type: "GET",
+        url: apiString,
+        dataType: "json",
+        success: function (json) {
+            ccs.length = 0;
+            json.categoryCombos.forEach((value, index) => {
+                let cc = new CategoryCombo();
+                cc.isDefault = value.isDefault;
+                cc.id = value.id;
+                cc.name = value.name;
+                ccs.push(cc);
+            });
+            showCategoryComboOnSelect(ccs);
+        }
+    });
+};
+const getOptionSet = () => {
+    var apiString = `${url}/api/optionSets.json?fields=id,name&paging=false`;
+    $.ajax({
+        beforeSend: function (xhr) {
+            $(".loader").show();
+            xhr.setRequestHeader("Authorization", "Basic " + btoa("dung:ABCD1234"));
+        },
+        type: "GET",
+        url: apiString,
+        dataType: "json",
+        success: function (json) {
+            oss.length = 0;
+            json.optionSets.forEach((value, index) => {
+                let os = new CategoryCombo();
+                os.id = value.id;
+                os.name = value.name;
+                oss.push(os);
+            });
+            showOptionSetOnSelect(oss);
         }
     });
 };

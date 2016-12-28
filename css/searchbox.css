@@ -1,11 +1,6 @@
 .searchBox{
     height: 50px;
 }
-.loader {
-    height:40px;
-    width:auto;
-}
-
 #searchBox {
     width: 170px;
     box-sizing: border-box;
@@ -23,4 +18,39 @@
 
 #searchBox:focus {
     width:350px;
+}
+
+.loader {
+    float: left;
+    margin-left: 5px;
+    border-radius: 50%;
+    border-top: 5px solid orange;
+    border-right: 5px solid blue;
+    border-bottom: 5px solid red;
+    border-left: 5px solid green;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 0.7s linear infinite;
+    animation: spin 0.7s linear infinite;
+}
+
+.loaderText{
+    margin-left: 5px;
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 33px;
+    height: 33px;
+    text-align: center;
+    float: left;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

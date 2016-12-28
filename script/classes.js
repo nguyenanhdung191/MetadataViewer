@@ -13,7 +13,7 @@ class DataElement {
         this.optionSet = null;
         this.user = null;
         this.dataSets = null;
-        this.organisationUnit = null;
+        this.zeroIsSignificant = null;
     }
 }
 
@@ -29,6 +29,7 @@ class Category {
 
 class CategoryCombo {
     constructor() {
+        this.isDefault = null;
         this.id = null;
         this.name = null;
         this.shortName = null;

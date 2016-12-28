@@ -17,7 +17,7 @@
 <table class="searchBox">
     <tr>
         <td><input type="text" id="searchBox" placeholder="Search by name.." oninput="getDataElement(this.value)"></td>
-        <td><img class="loader" src="img/loading.gif"/></td>
+        <td><div class="loaderText">Loading...</div><div class="loader"></div></td>
     </tr>
 </table>
 <div id="numberOfItem"></div>
@@ -31,7 +31,7 @@
         <div class="modal-body">
             <div class="modal-content-left">
                 <div class="detailHeader">ID</div>
-                <input type="text" class="detailData" id="detailID"/>
+                <input type="text" class="detailData" id="detailID" readonly/>
                 <div class="detailHeader">Name</div>
                 <input type="text" class="detailData" id="detailName"/>
                 <div class="detailHeader">Short name</div>
@@ -42,24 +42,61 @@
                 <input type="text" class="detailData" id="detailDescription"/>
                 <div class="detailHeader">Form name</div>
                 <input type="text" class="detailData" id="detailFormName"/>
-                <div class="detailHeader">Domain type</div>
-                <input type="text" class="detailData" id="detailDomainType"/>
-                <div class="detailHeader">Value type</div>
-                <input type="text" class="detailData" id="detailValueType"/>
-                <div class="detailHeader">Aggregation type</div>
-                <input type="text" class="detailData" id="detailAggregationType"/>
-                <div class="detailHeader">Store zero data values</div>
-                <input type="text" class="detailData" id="detailAllowNull"/>
-                <div class="detailHeader">Category combination</div>
-                <input type="text" class="detailData" id="detailCategoryCombo"/>
-                <div class="detailHeader">Option set</div>
-                <input type="text" class="detailData" id="detailOptionSet"/>
                 <div class="detailHeader">User</div>
-                <input type="text" class="detailData" id="detailUser"/>
+                <input type="text" class="detailData" id="detailUser" readonly/>
             </div>
             <div class="modal-content-right">
-                <div class="detailHeader">Organisation units</div>
-                <div class="detailData">tùm lum</div>
+                <div class="detailHeader">Domain type</div>
+                <select id="detailDomainType" class="detailData">
+                    <option value="TRACKER">Tracker</option>
+                    <option value="AGGREGATE">Aggregate</option>
+                </select>
+                <div class="detailHeader">Value type</div>
+                <select id="detailValueType" class="detailData">
+                    <option value="TEXT">Text</option>
+                    <option value="LONG_TEXT">Long text</option>
+                    <option value="LETTER">Letter</option>
+                    <option value="PHONE_NUMBER">Phone number</option>
+                    <option value="EMAIL">Email</option>
+                    <option value="BOOLEAN">Yes/No</option>
+                    <option value="TRUE_ONLY">Yes Only</option>
+                    <option value="DATE">Date</option>
+                    <option value="DATETIME">Date & Time</option>
+                    <option value="TIME">Time</option>
+                    <option value="NUMBER">Number</option>
+                    <option value="UNIT_INTERVAL">Unit interval</option>
+                    <option value="PERCENTAGE">Percentage</option>
+                    <option value="INTEGER">Integer</option>
+                    <option value="INTEGER_POSITIVE">Positive Integer</option>
+                    <option value="INTEGER_NEGATIVE">Negative Integer</option>
+                    <option value="INTEGER_ZERO_OR_POSITIVE">Positive or Zero Integer</option>
+                    <option value="TRACKER_ASSOCIATE">Tracker Associate</option>
+                    <option value="USERNAME">Username</option>
+                    <option value="FILE_RESOURCE">File</option>
+                    <option value="COORDINATE">Coordinate</option>
+                    <option value="ORGANISATION_UNIT">Organisation Unit</option>
+                </select>
+                <div class="detailHeader">Aggregation type</div>
+                <select id="detailAggregationType" class="detailData">
+                    <option value="SUM">Sum</option>
+                    <option value="AVERAGE">Average</option>
+                    <option value="AVERAGE_SUM_ORG_UNIT">Average (sum in orgunit hierachy)</option>
+                    <option value="COUNT">Count</option>
+                    <option value="STDDEV">Standard deviation</option>
+                    <option value="VARIANCE">Variance</option>
+                    <option value="MIN">Min</option>
+                    <option value="MAX">Max</option>
+                    <option value="NONE">None</option>
+                </select>
+                <div class="detailHeader">Store zero data values</div>
+                <select id="detailAllowNull" class="detailData">
+                    <option value=true>Yes</option>
+                    <option value=false>No</option>
+                </select>
+                <div class="detailHeader">Category combination</div>
+                <select id="detailCategoryCombo" class="detailData"></select>
+                <div class="detailHeader">Option set</div>
+                <select id="detailOptionSet" class="detailData"></select>
             </div>
         </div>
     </div>

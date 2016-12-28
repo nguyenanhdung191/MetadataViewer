@@ -64,6 +64,7 @@
 }
 
 #content td {
+    max-width: 350px;
     color: black;
     background: #FFFFFF;
     vertical-align: middle;
