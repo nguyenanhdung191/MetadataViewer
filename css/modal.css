@@ -15,6 +15,7 @@
 
 /* Modal Content */
 .modal-content {
+    border-radius: 6px;
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -27,7 +28,6 @@
     -webkit-animation-duration: 0.2s;
     animation-name: animatetop;
     animation-duration: 0.2s;
-    overflow-y: scroll;
 }
 
 /* Add Animation */

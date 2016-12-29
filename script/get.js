@@ -5,10 +5,10 @@ let des = [];
 const getDataElement = (keyword) => {
     var apiString;
     if(keyword == ""){
-        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name],user[id,name],optionSet[id,name]&paging=false`;
+        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name,isDefault],user[id,name],optionSet[id,name]`;
     }
     else{
-        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name],user[id,name],optionSet[id,name]&filter=name:ilike:${keyword}&paging=false`;
+        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name,isDefault],user[id,name],optionSet[id,name]&filter=name:ilike:${keyword}&paging=false`;
     }
     currentRequest = $.ajax({
         type: "GET",
@@ -36,6 +36,7 @@ const getDataElement = (keyword) => {
                 des.push(de);
             });
             showDataElement(des);
+            showShowingColumn(dataElementColumn);
             $("[name=data]").each((index, element) => {
                 $(element).on("click", (event) => {
                     let index = $(event.target).parent().index();

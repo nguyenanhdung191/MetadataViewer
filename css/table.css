@@ -3,13 +3,16 @@
     border-radius: 3px;
     border-collapse: collapse;
     padding: 5px;
-    width: 100%;
+    width: auto;
 }
 
 #content th {
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
     color: white;
     background: #66b3ff;
-    border-bottom: 2px solid white;
+    border-bottom: 3px solid #cccccc;
     border-right: 1px solid white;
     font-size: 15px;
     text-align: center;
@@ -17,22 +20,11 @@
     vertical-align: middle;
 }
 
-#content th:first-child {
-    border-top-left-radius: 3px;
-}
-
-#content th:last-child {
-    border-top-right-radius: 3px;
-    border-right: none;
-}
-
 [name=data] {
     cursor: pointer;
 }
 
 #content tr {
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
     color: #666B85;
     font-size: 13px;
     font-weight: normal;
@@ -45,10 +37,6 @@
 
 #content tr:first-child {
     border-top: none;
-}
-
-#content tr:last-child {
-    border-bottom: none;
 }
 
 #content tr:nth-child(odd) td {
@@ -64,12 +52,14 @@
 }
 
 #content td {
-    max-width: 350px;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 400px;
     color: black;
     background: #FFFFFF;
     vertical-align: middle;
     font-size: 13px;
-    border-right: 1px solid white;
+    border: 1px solid #cccccc;
 }
 
 #content td:last-child {

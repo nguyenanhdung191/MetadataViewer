@@ -1,0 +1,35 @@
+#filter{
+    float:left;
+    display:none;
+    padding: 10px 10px 10px 10px;
+    border-radius:5px;
+    border: 2px solid #ccd8ff;
+    margin-bottom:10px;
+    width:420px;
+    height:200px;
+}
+
+#filterButton {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom:5px;
+    font-weight:bold;
+    background-color:white;
+    border: 2px solid #0099ff;
+    border-radius:4px;
+    height:30px;
+    width:150px;
+    text-align: center;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#filterButton:hover {
+    background-color: #0099ff;
+    color: white;
+}
+#filterButton:active {
+    color: black;
+    outline: none;
+}

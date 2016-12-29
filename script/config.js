@@ -48,3 +48,18 @@ const aggregationTypeList = {
     "MAX": "Max",
     "NONE": "None"
 };
+const dataElementColumn = {"No" : 1,
+    "ID": 2,
+    "Name": 3,
+    "Short name": 4,
+    "Form name": 5,
+    "Code": 6,
+    "Description": 7,
+    "Value type": 8,
+    "Domain type": 9,
+    "Aggregation type": 10,
+    "Category combination": 11,
+    "Option set": 12,
+    "User": 13,
+    "Dataset": 14,
+    "Store zero": 15};
