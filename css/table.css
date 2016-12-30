@@ -3,7 +3,6 @@
     border-radius: 3px;
     border-collapse: collapse;
     padding: 5px;
-    width: auto;
 }
 
 #content th {
@@ -53,13 +52,13 @@
 
 #content td {
     padding-left: 5px;
-    padding-right: 5px;
     max-width: 400px;
     color: black;
     background: #FFFFFF;
     vertical-align: middle;
     font-size: 13px;
     border: 1px solid #cccccc;
+    max-height: 20px;
 }
 
 #content td:last-child {

@@ -7,11 +7,13 @@ $.ajaxSetup({
         $(".loaderText").show();
         xhr.setRequestHeader("Authorization", "Basic " + btoa("dung:ABCD1234"));
     },
-    error: function (json) {
-        console.log(json);
+    error: function (res) {
+        alert(res.responseText);
+        $(".loader").hide();
+        $(".loaderText").hide();
     }
 });
-const url = "https://dev.psi-mis.org";
+const url = "https://dhis2.asia/lao";
 const domainTypeList = {"AGGREGATE": "Aggregate", "TRACKER": "Tracker"};
 const valueTypeList = {
     "TEXT": "Text",
@@ -48,7 +50,8 @@ const aggregationTypeList = {
     "MAX": "Max",
     "NONE": "None"
 };
-const dataElementColumn = {"No" : 1,
+const dataElementColumn = {
+    "No": 1,
     "ID": 2,
     "Name": 3,
     "Short name": 4,
@@ -62,4 +65,29 @@ const dataElementColumn = {"No" : 1,
     "Option set": 12,
     "User": 13,
     "Dataset": 14,
-    "Store zero": 15};
+    "Store zero": 15
+};
+const filterOperatorSelectorHTML = `
+    <div><select>
+        <option value=":eq:">=</option>
+        <option value=":!eq:">!=</option>
+        <option value=":ilike:">like</option>
+        <option value=":!ilike:">not like</option>
+        <option value=":gt:">&gt;</option>
+        <option value=":ge:">&gt;=</option>
+        <option value=":lt:">&lt;</option>
+        <option value=":le:">&lt;=</option>
+    </select></div>`;
+const dataElementFilteredPropertySelectorHTML = `
+    <div><select>
+        <option value="&filter=name">Name</option>
+        <option value="&filter=shortName">Short name</option>
+        <option value="&filter=formName">Form name</option>
+        <option value="&filter=code">Code</option>
+        <option value="&filter=valueType">Value type</option>
+        <option value="&filter=domainType">Domain type</option>
+        <option value="&filter=aggregationType">Aggregation type</option>
+        <option value="&filter=categoryCombos.id">Category combination</option>
+        <option value="&filter=optionSets.id">Option set</option>
+        <option value="&filter=users.id">User</option>
+    </select></div>`;

@@ -4,12 +4,51 @@ let oss = [];
 let des = [];
 const getDataElement = (keyword) => {
     var apiString;
-    if(keyword == ""){
-        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name,isDefault],user[id,name],optionSet[id,name]`;
+    if (keyword == "") {
+        apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name,isDefault],user[id,name],optionSet[id,name]&paging=false`;
     }
-    else{
+    else {
         apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name,isDefault],user[id,name],optionSet[id,name]&filter=name:ilike:${keyword}&paging=false`;
     }
+    currentRequest = $.ajax({
+        type: "GET",
+        url: apiString,
+        dataType: "json",
+        success: function (json) {
+            des.length = 0;
+            json.dataElements.forEach((value, index) => {
+                let de = new DataElement();
+                de.code = value.code;
+                de.id = value.id;
+                de.name = value.name;
+                de.shortName = value.shortName;
+                de.formName = value.displayFormName;
+                de.aggregationType = value.aggregationType;
+                de.domainType = value.domainType;
+                de.description = value.description;
+                de.valueType = value.valueType;
+                de.categoryCombo = value.categoryCombo;
+                de.user = value.user;
+                de.dataSets = value.dataSets;
+                de.optionSet = value.optionSet;
+                de.user = value.user;
+                de.zeroIsSignificant = value.zeroIsSignificant;
+                des.push(de);
+            });
+            showDataElement(des);
+            showShowingColumn(dataElementColumn);
+            $("[name=data]").each((index, element) => {
+                $(element).on("click", (event) => {
+                    let index = $(event.target).parent().index();
+                    showDataElementDetail(des[index]);
+                });
+            });
+        }
+    });
+};
+const getDataElementByFilter = (filterUrl) => {
+    var apiString;
+    apiString = `${url}/api/dataElements.json?fields=:all,categoryCombo[id,name,isDefault],user[id,name],optionSet[id,name]${filterUrl}`;
     currentRequest = $.ajax({
         type: "GET",
         url: apiString,

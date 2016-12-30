@@ -97,7 +97,6 @@
 }
 
 .detailData {
-    font-family: 'Roboto', sans-serif;
     width: 95%;
     font-size: 15px;
     margin-bottom: 15px;
@@ -117,7 +116,6 @@
 select.detailData {
     border-bottom: 1px solid #e8e8e8;
     height: 21px;
-    font-family: 'Roboto', sans-serif;
 }
 
 select.detailData:focus {

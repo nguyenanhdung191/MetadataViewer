@@ -1,23 +1,26 @@
-#filter{
-    float:left;
-    display:none;
+#filter {
+    float: left;
+    display: none;
     padding: 10px 10px 10px 10px;
-    border-radius:5px;
+    border-radius: 5px;
     border: 2px solid #ccd8ff;
-    margin-bottom:10px;
-    width:420px;
-    height:200px;
+    margin-bottom: 10px;
+    width: 420px;
+    min-height: 200px;
+}
+
+#filter button {
+    cursor: pointer;
 }
 
 #filterButton {
-    font-family: 'Roboto', sans-serif;
-    margin-bottom:5px;
-    font-weight:bold;
-    background-color:white;
+    margin-bottom: 5px;
+    font-weight: bold;
+    background-color: white;
     border: 2px solid #0099ff;
-    border-radius:4px;
-    height:30px;
-    width:150px;
+    border-radius: 4px;
+    height: 30px;
+    width: 150px;
     text-align: center;
     font-size: 16px;
     -webkit-transition-duration: 0.4s; /* Safari */
@@ -29,7 +32,48 @@
     background-color: #0099ff;
     color: white;
 }
+
 #filterButton:active {
     color: black;
     outline: none;
+}
+
+.filterItemContainer {
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.filterItemContainer div {
+    float: left;
+    margin-right: 3px;
+}
+
+.filterItemContainer div select {
+    border: 1px solid #ccc;
+    border-radius:3px;
+    font-size: 13px;
+    height: 21px;
+}
+
+.filterItemContainer div input {
+    padding-left:2px;
+    height:17px;
+    border: 1px solid #ccc;
+    border-radius:3px;
+    width: 120px;
+    font-size: 13px;
+}
+
+.filterItemContainer button {
+    font-size:15px;
+    border:0;
+    background-color: white;
+}
+
+.filterItemContainer button:active {
+    outline: none;
+}
+
+.inputFilterKeyword {
+    width: 50px;
 }
