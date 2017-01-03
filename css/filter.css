@@ -5,7 +5,7 @@
     border-radius: 5px;
     border: 2px solid #ccd8ff;
     margin-bottom: 10px;
-    width: 420px;
+    width: auto;
     min-height: 200px;
 }
 
@@ -50,23 +50,24 @@
 
 .filterItemContainer div select {
     border: 1px solid #ccc;
-    border-radius:3px;
+    border-radius: 3px;
     font-size: 13px;
     height: 21px;
+    max-width: 200px;
 }
 
 .filterItemContainer div input {
-    padding-left:2px;
-    height:17px;
+    padding-left: 2px;
+    height: 17px;
     border: 1px solid #ccc;
-    border-radius:3px;
-    width: 120px;
+    border-radius: 3px;
+    width: 196px;
     font-size: 13px;
 }
 
 .filterItemContainer button {
-    font-size:15px;
-    border:0;
+    font-size: 15px;
+    border: 0;
     background-color: white;
 }
 

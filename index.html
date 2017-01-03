@@ -6,6 +6,7 @@
     <script src="script/classes.js"></script>
     <script src="script/config.js"></script>
     <script src="script/get.js"></script>
+    <script src="script/set.js"></script>
     <script src="script/view.js"></script>
     <script src="script/showhidecolumn.js"></script>
     <script src="script/filter.js"></script>
@@ -76,6 +77,8 @@
                 <input type="text" class="detailData" id="detailFormName"/>
                 <div class="detailHeader">User</div>
                 <input type="text" class="detailData" id="detailUser" readonly/>
+                <button onclick="updateDataElement()">SAVE</button>
+                <button>CANCEL</button>
             </div>
             <div class="modal-content-right">
                 <div class="detailHeader">Domain type</div>

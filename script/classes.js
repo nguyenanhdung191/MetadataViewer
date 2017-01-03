@@ -12,7 +12,6 @@ class DataElement {
         this.categoryCombo = null;
         this.optionSet = null;
         this.user = null;
-        this.dataSets = null;
         this.zeroIsSignificant = null;
     }
 }

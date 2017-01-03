@@ -40,35 +40,42 @@ const showDataElement = (des) => {
     HTML += "</tbody>";
     $("#numberOfItem").html(`Result: <strong>${des.length}</strong> item(s)`);
     $("#content").html(HTML);
+    $("[name=data]").each((index, element) => {
+        $(element).on("click", (event) => {
+            let index = $(event.target).parent().index();
+            showDataElementDetail(index);
+        });
+    });
     $(".loader").hide();
     $(".loaderText").hide();
 };
-const showDataElementDetail = (de)=> {
+const showDataElementDetail = (deIndex)=> {
+    currentDataElement = des[deIndex];
     $("#myModal").show();
-    $("#detailID").val(de.id);
-    $("#detailName").val(de.name);
-    $("#detailShortName").val(de.shortName);
-    $("#detailCode").val(de.code);
-    $("#detailDescription").val(de.description);
-    $("#detailFormName").val(de.formName);
-    $("#detailDomainType").val(de.domainType);
-    $("#detailValueType").val(de.valueType);
-    $("#detailAggregationType").val(de.aggregationType);
-    if (de.zeroIsSignificant == true) {
+    $("#detailID").val(currentDataElement.id);
+    $("#detailName").val(currentDataElement.name);
+    $("#detailShortName").val(currentDataElement.shortName);
+    $("#detailCode").val(currentDataElement.code);
+    $("#detailDescription").val(currentDataElement.description);
+    $("#detailFormName").val(currentDataElement.formName);
+    $("#detailDomainType").val(currentDataElement.domainType);
+    $("#detailValueType").val(currentDataElement.valueType);
+    $("#detailAggregationType").val(currentDataElement.aggregationType);
+    if (currentDataElement.zeroIsSignificant == true) {
         $("#detailAllowNull").val("true");
     }
     else {
         $("#detailAllowNull").val("false");
     }
-    $("#detailCategoryCombo").val(de.categoryCombo.id);
-    if (de.optionSet != null) {
-        $("#detailOptionSet").val(de.optionSet.id);
+    $("#detailCategoryCombo").val(currentDataElement.categoryCombo.id);
+    if (currentDataElement.optionSet != null) {
+        $("#detailOptionSet").val(currentDataElement.optionSet.id);
     }
     else {
         $("#detailOptionSet").val("");
     }
-    if (de.user != null) {
-        $("#detailUser").val(`${de.user.id} - ${de.user.name}`);
+    if (currentDataElement.user != null) {
+        $("#detailUser").val(`${currentDataElement.user.id} - ${currentDataElement.user.name}`);
     } else {
         $("#detailUser").val("");
     }
@@ -85,6 +92,7 @@ const showCategoryComboOnSelect = (ccs) => {
             HTML += `<option value=${cc.id}>${cc.id} - ${cc.name}</option>`;
         }
     });
+    categoryComboSelector = `<div><select>${HTML}</select></div>`;
     $("#detailCategoryCombo").html(HTML);
 };
 const showOptionSetOnSelect = (oss) => {
@@ -92,6 +100,7 @@ const showOptionSetOnSelect = (oss) => {
     oss.forEach((os, index) => {
         HTML += `<option value=${os.id}>${os.id} - ${os.name}</option>`;
     });
+    optionSetSelector = `<div><select>${HTML}</select></div>`;
     $("#detailOptionSet").html(HTML);
 };
 const showShowingColumn = (columns) => {

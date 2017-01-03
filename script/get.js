@@ -1,4 +1,5 @@
 let currentRequest = null;
+let currentDataElement = null;
 let ccs = [];
 let oss = [];
 let des = [];
@@ -29,7 +30,6 @@ const getDataElement = (keyword) => {
                 de.valueType = value.valueType;
                 de.categoryCombo = value.categoryCombo;
                 de.user = value.user;
-                de.dataSets = value.dataSets;
                 de.optionSet = value.optionSet;
                 de.user = value.user;
                 de.zeroIsSignificant = value.zeroIsSignificant;
@@ -37,12 +37,6 @@ const getDataElement = (keyword) => {
             });
             showDataElement(des);
             showShowingColumn(dataElementColumn);
-            $("[name=data]").each((index, element) => {
-                $(element).on("click", (event) => {
-                    let index = $(event.target).parent().index();
-                    showDataElementDetail(des[index]);
-                });
-            });
         }
     });
 };

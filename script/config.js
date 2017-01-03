@@ -8,12 +8,16 @@ $.ajaxSetup({
         xhr.setRequestHeader("Authorization", "Basic " + btoa("dung:ABCD1234"));
     },
     error: function (res) {
-        alert(res.responseText);
+        if (res.statusText == "abort") {
+
+        } else {
+            alert(res.responseText);
+        }
         $(".loader").hide();
         $(".loaderText").hide();
     }
 });
-const url = "https://dhis2.asia/lao";
+const url = "http://localhost:8080/dhis";
 const domainTypeList = {"AGGREGATE": "Aggregate", "TRACKER": "Tracker"};
 const valueTypeList = {
     "TEXT": "Text",
@@ -67,8 +71,7 @@ const dataElementColumn = {
     "Dataset": 14,
     "Store zero": 15
 };
-const filterOperatorSelectorHTML = `
-    <div><select>
+const filterOperatorSelectorHTML = `<div><select>
         <option value=":eq:">=</option>
         <option value=":!eq:">!=</option>
         <option value=":ilike:">like</option>
@@ -78,8 +81,7 @@ const filterOperatorSelectorHTML = `
         <option value=":lt:">&lt;</option>
         <option value=":le:">&lt;=</option>
     </select></div>`;
-const dataElementFilteredPropertySelectorHTML = `
-    <div><select>
+const dataElementFilteredPropertySelectorHTML = `<div><select onchange="generateSelector(this)">
         <option value="&filter=name">Name</option>
         <option value="&filter=shortName">Short name</option>
         <option value="&filter=formName">Form name</option>
@@ -87,7 +89,47 @@ const dataElementFilteredPropertySelectorHTML = `
         <option value="&filter=valueType">Value type</option>
         <option value="&filter=domainType">Domain type</option>
         <option value="&filter=aggregationType">Aggregation type</option>
-        <option value="&filter=categoryCombos.id">Category combination</option>
-        <option value="&filter=optionSets.id">Option set</option>
-        <option value="&filter=users.id">User</option>
+        <option value="&filter=categoryCombo.id">Category combination</option>
+        <option value="&filter=optionSet.id">Option set</option>
     </select></div>`;
+const domainTypeSelector = `<div><select>
+            <option value="TRACKER">Tracker</option>
+            <option value="AGGREGATE">Aggregate</option>
+        </select></div>`;
+const aggregationTypeSelector = `<div><select>
+                    <option value="SUM">Sum</option>
+                    <option value="AVERAGE">Average</option>
+                    <option value="AVERAGE_SUM_ORG_UNIT">Average (sum in orgunit hierachy)</option>
+                    <option value="COUNT">Count</option>
+                    <option value="STDDEV">Standard deviation</option>
+                    <option value="VARIANCE">Variance</option>
+                    <option value="MIN">Min</option>
+                    <option value="MAX">Max</option>
+                    <option value="NONE">None</option>
+                </select></div>`;
+const valueTypeSelector = `<div><select>
+                    <option value="TEXT">Text</option>
+                    <option value="LONG_TEXT">Long text</option>
+                    <option value="LETTER">Letter</option>
+                    <option value="PHONE_NUMBER">Phone number</option>
+                    <option value="EMAIL">Email</option>
+                    <option value="BOOLEAN">Yes/No</option>
+                    <option value="TRUE_ONLY">Yes Only</option>
+                    <option value="DATE">Date</option>
+                    <option value="DATETIME">Date & Time</option>
+                    <option value="TIME">Time</option>
+                    <option value="NUMBER">Number</option>
+                    <option value="UNIT_INTERVAL">Unit interval</option>
+                    <option value="PERCENTAGE">Percentage</option>
+                    <option value="INTEGER">Integer</option>
+                    <option value="INTEGER_POSITIVE">Positive Integer</option>
+                    <option value="INTEGER_NEGATIVE">Negative Integer</option>
+                    <option value="INTEGER_ZERO_OR_POSITIVE">Positive or Zero Integer</option>
+                    <option value="TRACKER_ASSOCIATE">Tracker Associate</option>
+                    <option value="USERNAME">Username</option>
+                    <option value="FILE_RESOURCE">File</option>
+                    <option value="COORDINATE">Coordinate</option>
+                    <option value="ORGANISATION_UNIT">Organisation Unit</option>
+                </select></div>`;
+let categoryComboSelector;
+let optionSetSelector;

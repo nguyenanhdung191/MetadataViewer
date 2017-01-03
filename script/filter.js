@@ -29,3 +29,13 @@ const runFilter = () => {
     filterUrl += "&paging=false";
     getDataElementByFilter(filterUrl);
 };
+const generateSelector = (propertySelector)=> {
+    switch(propertySelector.value){
+        case "&filter=valueType": $(propertySelector).parent().next().next().replaceWith(valueTypeSelector); break;
+        case "&filter=domainType": $(propertySelector).parent().next().next().replaceWith(domainTypeSelector); break;
+        case "&filter=aggregationType": $(propertySelector).parent().next().next().replaceWith(aggregationTypeSelector); break;
+        case "&filter=categoryCombo.id": $(propertySelector).parent().next().next().replaceWith(categoryComboSelector); break;
+        case "&filter=optionSet.id" : $(propertySelector).parent().next().next().replaceWith(optionSetSelector); break;
+        default: $(propertySelector).parent().next().next().replaceWith(`<div><input type="text" /></div>`);
+    }
+};
